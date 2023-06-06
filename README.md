@@ -1,4 +1,11 @@
-# apidesing
+# Api Design
+
+## Integrantes
+- Joaquín Jordan
+- Josué Arriaga
+- José Chachi
+- Renato Cernades
+- Nicolas Arroyo
 
 ## Project setup
 ```
