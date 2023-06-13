@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -59,6 +61,13 @@ export default {
       ],
       cartItems: [],
     };
+  },
+  mounted() {
+    axios.get('http://localhost:8002/products').then((res) => {
+      this.availableItems = JSON.parse(res.data).products;
+      console.log('products', JSON.parse(res.data).products);
+    });
+    console.log('fetching products');
   },
   methods: {
     showAddItemsModal() {
