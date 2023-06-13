@@ -46,15 +46,17 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await axios.post('/api/login', {
-          username: this.username,
-          password: this.password,
-        });
+        const res = await axios.get('http://localhost:8002/user');
 
         // Handle successful login response here
-        console.log(response.data);
-        // Redirect to the home page or desired route on successful login
-        this.$router.push('/');
+        const usersList = JSON.parse(res.data).users;
+        console.log(usersList);
+
+        usersList.forEach((user) => {
+          if (user.name === this.username && user.password === this.password) {
+            this.$router.push('/');
+          }
+        });
       } catch (error) {
         // Handle login error here
         console.error(error);
